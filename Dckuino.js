@@ -91,6 +91,16 @@ class Dckuinojs {
 
   toArduino(inputCode)
   {
+
+
+	if (document.getElementById("buttonchoice").selectedIndex == 1) {
+		var buttonCode = "  // Set up the button (thanks to Seytonic)\n  pinMode(3, INPUT_PULLUP);\n  if (digitalRead(3) == LOW) {\n    while(1);\n  }\n\n";
+	}
+
+	else if (document.getElementById("buttonchoice").selectedIndex == 0) {
+		var buttonCode = "";
+	}
+
     // Check if the parameter is empty or undefined
     if (inputCode === '' || inputCode === undefined)
     {
@@ -117,6 +127,7 @@ class Dckuinojs {
     + '/* Init function */\n'
     + 'void setup()\n'
     + '{\n'
+    + buttonCode
     + '  // Begining the Keyboard stream\n'
     + '  Keyboard.begin();\n\n'
     + '  // Wait 500ms\n'
